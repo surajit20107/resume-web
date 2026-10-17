@@ -1,0 +1,662 @@
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --sans: 'Helvetica Neue', Helvetica, Arial, 'Segoe UI', Roboto, system-ui,
+    sans-serif;
+  --ink: #17191d;
+  --muted: #55606f;
+  --rule: #c3c7cd;
+
+  --ui-bg: #e9ecf1;
+  --ui-surface: #ffffff;
+  --ui-line: #d3d8e0;
+  --ui-text: #1b1f27;
+  --ui-muted: #5c6673;
+  --ui-accent: #1d4ed8;
+  --ui-accent-soft: #e7edfd;
+
+  font-family: var(--sans);
+  color: var(--ui-text);
+  background: var(--ui-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--ui-bg);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Toolbar
+   ========================================================================== */
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--ui-line);
+}
+
+.toolbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.toolbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ui-accent);
+}
+
+.brand-name {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brand-sub {
+  color: var(--ui-muted);
+  font-size: 12.5px;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 8px;
+  margin-left: 4px;
+  border-left: 1px solid var(--ui-line);
+}
+
+.btn {
+  border: 1px solid var(--ui-line);
+  background: #fff;
+  color: var(--ui-text);
+  border-radius: 8px;
+  padding: 7px 13px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn:hover {
+  border-color: #b6bcc6;
+  background: #f7f8fa;
+}
+
+.btn-primary {
+  background: var(--ui-accent);
+  border-color: var(--ui-accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #1b45c0;
+  border-color: #1b45c0;
+  color: #fff;
+}
+
+.btn-quiet {
+  color: var(--ui-muted);
+}
+
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--ui-line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.seg-btn {
+  border: 0;
+  background: transparent;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ui-muted);
+}
+
+.seg-btn.is-active {
+  background: var(--ui-accent-soft);
+  color: var(--ui-accent);
+}
+
+.toolbar-notice {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 9px 20px 11px;
+  font-size: 13px;
+  color: #1e3a8a;
+  background: var(--ui-accent-soft);
+  border-top: 1px solid #cdd9f8;
+}
+
+/* ==========================================================================
+   Workspace
+   ========================================================================== */
+
+.workspace {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+.paper-wrap {
+  overflow: auto;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   The resume document (screen + print share these rules)
+   ========================================================================== */
+
+.sheet {
+  --sheet-font: 13.4px;
+  --sheet-lh: 1.45;
+  --sec-gap: 14px;
+
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 14mm 15mm;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--sheet-font);
+  line-height: var(--sheet-lh);
+  text-align: left;
+  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.16);
+}
+
+.sheet a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.r-header {
+  text-align: center;
+  padding-bottom: 9px;
+  margin-bottom: var(--sec-gap);
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.r-name {
+  margin: 0;
+  font-size: 1.85em;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.r-headline {
+  margin: 5px 0 0;
+  font-size: 0.98em;
+  font-weight: 600;
+}
+
+.r-contact {
+  margin: 5px 0 0;
+  font-size: 0.9em;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.sheet a.r-link {
+  color: var(--muted);
+}
+
+.r-sep {
+  padding: 0 7px;
+  color: var(--rule);
+}
+
+.r-section {
+  margin-top: var(--sec-gap);
+}
+
+.r-section:first-of-type {
+  margin-top: 0;
+}
+
+.r-h2 {
+  margin: 0 0 7px;
+  font-size: 0.95em;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.r-summary {
+  margin: 0;
+  text-align: justify;
+}
+
+.r-skills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.r-skills li {
+  margin: 0 0 2px;
+}
+
+.r-education {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.r-education li {
+  margin: 0 0 3px;
+}
+
+.r-entry {
+  margin: 0 0 10px;
+}
+
+.r-entry:last-child {
+  margin-bottom: 0;
+}
+
+.r-h3 {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.r-dates {
+  margin: 1px 0 0;
+  font-size: 0.9em;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.r-tech {
+  margin: 1px 0 0;
+  font-size: 0.9em;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.r-project-links {
+  margin: 1px 0 0;
+  font-size: 0.88em;
+}
+
+.r-bullets {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+.r-bullets li {
+  margin: 0 0 2px;
+  padding-left: 2px;
+}
+
+/* ==========================================================================
+   Editor panel
+   ========================================================================== */
+
+.editor {
+  position: sticky;
+  top: 78px;
+  width: 400px;
+  flex: 0 0 400px;
+  max-height: calc(100vh - 100px);
+  overflow: hidden;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-line);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
+}
+
+.editor-scroll {
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.group {
+  margin-bottom: 18px;
+}
+
+.group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.group-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ui-muted);
+}
+
+.ghost-btn {
+  border: 1px dashed #b9c0cb;
+  background: transparent;
+  color: var(--ui-accent);
+  border-radius: 7px;
+  padding: 4px 9px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ghost-btn:hover {
+  background: var(--ui-accent-soft);
+  border-color: var(--ui-accent);
+}
+
+.card {
+  border: 1px solid var(--ui-line);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #fcfcfd;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 9px;
+  border-bottom: 1px solid #e6e9ee;
+}
+
+.card-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ui-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-actions {
+  display: flex;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.card-body {
+  padding: 10px 9px 4px;
+}
+
+.icon-btn {
+  border: 1px solid var(--ui-line);
+  background: #fff;
+  border-radius: 6px;
+  width: 24px;
+  height: 24px;
+  line-height: 1;
+  font-size: 12px;
+  color: var(--ui-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  border-color: #b6bcc6;
+  color: var(--ui-text);
+}
+
+.icon-btn-danger:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.fld {
+  display: block;
+  margin-bottom: 9px;
+}
+
+.fld-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ui-muted);
+  margin-bottom: 3px;
+}
+
+.fld-input {
+  width: 100%;
+  border: 1px solid var(--ui-line);
+  border-radius: 7px;
+  padding: 6px 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--ui-text);
+  background: #fff;
+}
+
+.fld-input:focus {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: -1px;
+  border-color: var(--ui-accent);
+}
+
+.fld-textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.fld-hint {
+  display: block;
+  font-size: 11px;
+  color: var(--ui-muted);
+  margin-top: 3px;
+}
+
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.order-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 9px;
+  border: 1px solid var(--ui-line);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  background: #fcfcfd;
+}
+
+/* ==========================================================================
+   Responsive (screen only — printing always uses the full A4 sheet)
+   ========================================================================== */
+
+@media (max-width: 1180px) {
+  .workspace.is-editing {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .workspace.is-editing .paper-wrap {
+    order: 1;
+  }
+
+  .editor {
+    position: static;
+    width: 100%;
+    flex: 1 1 auto;
+    max-height: none;
+    order: 2;
+  }
+
+  .editor-scroll {
+    max-height: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .sheet {
+    width: 100%;
+    min-height: 0;
+    padding: 22px 18px;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12);
+  }
+
+  .brand-sub {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Print — the PDF that gets downloaded
+   ========================================================================== */
+
+@page {
+  size: A4;
+  margin: 11mm 13mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff;
+  }
+
+  .no-print,
+  .toolbar,
+  .editor {
+    display: none !important;
+  }
+
+  .workspace,
+  .paper-wrap {
+    display: block;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .sheet {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border: 0;
+    color: #000;
+  }
+
+  .sheet[data-density='compact'] {
+    --sheet-font: 9.4pt;
+    --sheet-lh: 1.26;
+    --sec-gap: 8px;
+  }
+
+  .sheet[data-density='normal'] {
+    --sheet-font: 10.2pt;
+    --sheet-lh: 1.34;
+    --sec-gap: 11px;
+  }
+
+  /* Keep entries and individual bullets from splitting across pages. */
+  .r-entry,
+  .r-bullets li,
+  .r-skills li,
+  .r-education li {
+    break-inside: avoid;
+  }
+
+  .r-h2,
+  .r-h3,
+  .r-name,
+  .r-dates,
+  .r-tech {
+    break-after: avoid;
+  }
+
+  /* Letter-spacing makes PDF text extraction insert spurious spaces
+     (e.g. "S U M M A RY"), which breaks ATS section detection. */
+  .r-h2,
+  .r-name {
+    letter-spacing: normal;
+  }
+
+  .r-contact,
+  .r-headline,
+  .r-summary,
+  .r-tech,
+  .r-dates {
+    color: #000;
+  }
+
+  .r-sep {
+    color: #000;
+  }
+
+  a,
+  .sheet a.r-link {
+    color: #000;
+    text-decoration: none;
+  }
+}
