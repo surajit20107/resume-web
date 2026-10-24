@@ -4,6 +4,8 @@ import { DEFAULT_SECTION_ORDER } from '../data/resume'
 
 export const RESUME_KEY = 'ats-resume:data:v1'
 export const DENSITY_KEY = 'ats-resume:density:v1'
+// Keep in sync with the no-flash script in index.html.
+export const THEME_KEY = 'ats-resume:theme:v1'
 
 export function clone(value) {
   return JSON.parse(JSON.stringify(value))

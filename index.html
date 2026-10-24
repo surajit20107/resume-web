@@ -9,6 +9,28 @@
       content="Editable, ATS-friendly resume for Surajit Jana — edit in the browser and download a clean PDF or plain-text copy."
     />
     <title>Surajit Jana — Resume</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a flash of light mode.
+      // Keep the storage key in sync with src/lib/resumeIO.js (THEME_KEY).
+      ;(function () {
+        try {
+          var saved = window.localStorage.getItem('ats-resume:theme:v1')
+          var theme =
+            saved === 'light' || saved === 'dark' || saved === 'system'
+              ? saved
+              : 'system'
+          var dark =
+            theme === 'dark' ||
+            (theme === 'system' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches)
+          var resolved = dark ? 'dark' : 'light'
+          document.documentElement.setAttribute('data-theme', resolved)
+          document.documentElement.style.colorScheme = resolved
+        } catch (error) {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -47,6 +47,17 @@ This keeps the text layer clean so ATS software reads it correctly.
 Use the **1-page / Roomier** toggle to switch between a tight single-page layout
 and a slightly more relaxed one.
 
+## Dark mode
+
+The theme switch at the right of the toolbar has three options:
+**Light**, **Dark** and **System** (follows your OS setting). Your choice is
+saved and applied before the page paints, so there is no flash of light mode on
+load. The default is **System**.
+
+Dark mode only changes the screen. The downloaded PDF is **always black text on
+white paper**, so you can edit comfortably at night without any risk to the
+output.
+
 ## Why the downloaded PDF is ATS-friendly
 
 - **Real, selectable text** — never an image or a scan.
@@ -65,9 +76,11 @@ src/
   data/resume.js            Content — edit this to change the resume
   lib/resumeIO.js           Storage keys, downloads, plain-text export
   hooks/useResume.js        State + localStorage persistence
+  hooks/useTheme.js         Light / dark / system theme
   components/
     ResumeSheet.jsx         The resume document (semantic, single column)
     EditorPanel.jsx         Live editor UI
     Toolbar.jsx             Edit / download / import / reset controls
+    ThemeToggle.jsx         Light / dark / system switch
   index.css                 Screen styles + A4 print stylesheet
 ```

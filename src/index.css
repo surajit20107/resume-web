@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Base
+   Theme tokens
    ========================================================================== */
 
 *,
@@ -9,26 +9,71 @@
 }
 
 :root {
-  --sans: 'Helvetica Neue', Helvetica, Arial, 'Segoe UI', Roboto, system-ui,
-    sans-serif;
-  --ink: #17191d;
-  --muted: #55606f;
-  --rule: #c3c7cd;
-
+  /* UI chrome */
   --ui-bg: #e9ecf1;
   --ui-surface: #ffffff;
+  --ui-surface-2: #fcfcfd;
+  --ui-field-bg: #ffffff;
+  --ui-hover-bg: #f7f8fa;
+  --ui-toolbar: rgba(255, 255, 255, 0.92);
   --ui-line: #d3d8e0;
+  --ui-line-strong: #b6bcc6;
   --ui-text: #1b1f27;
   --ui-muted: #5c6673;
   --ui-accent: #1d4ed8;
   --ui-accent-soft: #e7edfd;
+  --ui-accent-soft-line: #cdd9f8;
+  --ui-accent-soft-text: #1e3a8a;
+  --ui-primary-bg: #1d4ed8;
+  --ui-primary-bg-hover: #1b45c0;
+  --ui-primary-text: #ffffff;
+  --ui-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
+  --ui-shadow-sheet: 0 12px 34px rgba(15, 23, 42, 0.16);
 
-  font-family: var(--sans);
+  /* The resume document itself */
+  --sheet-bg: #ffffff;
+  --ink: #17191d;
+  --muted: #55606f;
+  --rule: #c3c7cd;
+
+  color-scheme: light;
+
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Segoe UI', Roboto,
+    system-ui, sans-serif;
   color: var(--ui-text);
   background: var(--ui-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+[data-theme='dark'] {
+  --ui-bg: #0e1015;
+  --ui-surface: #171a21;
+  --ui-surface-2: #1c2028;
+  --ui-field-bg: #12151b;
+  --ui-hover-bg: #232935;
+  --ui-toolbar: rgba(23, 26, 33, 0.92);
+  --ui-line: #2a2f3a;
+  --ui-line-strong: #414857;
+  --ui-text: #e7eaf0;
+  --ui-muted: #98a2b3;
+  --ui-accent: #7aa2ff;
+  --ui-accent-soft: #1a2436;
+  --ui-accent-soft-line: #2b3a55;
+  --ui-accent-soft-text: #bcd0ff;
+  --ui-primary-bg: #2f6bff;
+  --ui-primary-bg-hover: #245ce6;
+  --ui-primary-text: #ffffff;
+  --ui-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  --ui-shadow-sheet: 0 12px 34px rgba(0, 0, 0, 0.55);
+
+  --sheet-bg: #181b22;
+  --ink: #e9ecf2;
+  --muted: #9aa4b5;
+  --rule: #3a4150;
+
+  color-scheme: dark;
 }
 
 html,
@@ -51,9 +96,10 @@ button {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--ui-toolbar);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--ui-line);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .toolbar-inner {
@@ -109,31 +155,31 @@ button {
 
 .btn {
   border: 1px solid var(--ui-line);
-  background: #fff;
+  background: var(--ui-field-bg);
   color: var(--ui-text);
   border-radius: 8px;
   padding: 7px 13px;
   font-size: 13.5px;
   font-weight: 600;
   line-height: 1.2;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .btn:hover {
-  border-color: #b6bcc6;
-  background: #f7f8fa;
+  border-color: var(--ui-line-strong);
+  background: var(--ui-hover-bg);
 }
 
 .btn-primary {
-  background: var(--ui-accent);
-  border-color: var(--ui-accent);
-  color: #fff;
+  background: var(--ui-primary-bg);
+  border-color: var(--ui-primary-bg);
+  color: var(--ui-primary-text);
 }
 
 .btn-primary:hover {
-  background: #1b45c0;
-  border-color: #1b45c0;
-  color: #fff;
+  background: var(--ui-primary-bg-hover);
+  border-color: var(--ui-primary-bg-hover);
+  color: var(--ui-primary-text);
 }
 
 .btn-quiet {
@@ -145,7 +191,7 @@ button {
   border: 1px solid var(--ui-line);
   border-radius: 8px;
   overflow: hidden;
-  background: #fff;
+  background: var(--ui-field-bg);
 }
 
 .seg-btn {
@@ -155,6 +201,11 @@ button {
   font-size: 13px;
   font-weight: 600;
   color: var(--ui-muted);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.seg-btn:hover {
+  color: var(--ui-text);
 }
 
 .seg-btn.is-active {
@@ -162,14 +213,22 @@ button {
   color: var(--ui-accent);
 }
 
+.seg-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 9px;
+  line-height: 0;
+}
+
 .toolbar-notice {
   max-width: 1400px;
   margin: 0 auto;
   padding: 9px 20px 11px;
   font-size: 13px;
-  color: #1e3a8a;
+  color: var(--ui-accent-soft-text);
   background: var(--ui-accent-soft);
-  border-top: 1px solid #cdd9f8;
+  border-top: 1px solid var(--ui-accent-soft-line);
 }
 
 /* ==========================================================================
@@ -204,13 +263,16 @@ button {
   min-height: 297mm;
   margin: 0 auto;
   padding: 14mm 15mm;
-  background: #fff;
+  background: var(--sheet-bg);
   color: var(--ink);
-  font-family: var(--sans);
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Segoe UI', Roboto,
+    system-ui, sans-serif;
   font-size: var(--sheet-font);
   line-height: var(--sheet-lh);
   text-align: left;
-  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.16);
+  box-shadow: var(--ui-shadow-sheet);
+  transition: background-color 0.25s ease, color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .sheet a {
@@ -356,7 +418,8 @@ button {
   background: var(--ui-surface);
   border: 1px solid var(--ui-line);
   border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
+  box-shadow: var(--ui-shadow);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .editor-scroll {
@@ -387,7 +450,7 @@ button {
 }
 
 .ghost-btn {
-  border: 1px dashed #b9c0cb;
+  border: 1px dashed var(--ui-line-strong);
   background: transparent;
   color: var(--ui-accent);
   border-radius: 7px;
@@ -405,7 +468,8 @@ button {
   border: 1px solid var(--ui-line);
   border-radius: 10px;
   margin-bottom: 10px;
-  background: #fcfcfd;
+  background: var(--ui-surface-2);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .card-head {
@@ -414,7 +478,7 @@ button {
   justify-content: space-between;
   gap: 8px;
   padding: 7px 9px;
-  border-bottom: 1px solid #e6e9ee;
+  border-bottom: 1px solid var(--ui-line);
 }
 
 .card-title {
@@ -438,7 +502,7 @@ button {
 
 .icon-btn {
   border: 1px solid var(--ui-line);
-  background: #fff;
+  background: var(--ui-field-bg);
   border-radius: 6px;
   width: 24px;
   height: 24px;
@@ -448,10 +512,11 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .icon-btn:hover {
-  border-color: #b6bcc6;
+  border-color: var(--ui-line-strong);
   color: var(--ui-text);
 }
 
@@ -481,7 +546,8 @@ button {
   font-size: 13px;
   font-family: inherit;
   color: var(--ui-text);
-  background: #fff;
+  background: var(--ui-field-bg);
+  transition: background-color 0.25s ease, border-color 0.15s;
 }
 
 .fld-input:focus {
@@ -524,7 +590,7 @@ button {
   border-radius: 8px;
   margin-bottom: 6px;
   font-size: 13px;
-  background: #fcfcfd;
+  background: var(--ui-surface-2);
 }
 
 /* ==========================================================================
@@ -559,7 +625,7 @@ button {
     width: 100%;
     min-height: 0;
     padding: 22px 18px;
-    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12);
+    box-shadow: var(--ui-shadow);
   }
 
   .brand-sub {
@@ -568,7 +634,8 @@ button {
 }
 
 /* ==========================================================================
-   Print — the PDF that gets downloaded
+   Print — the PDF that gets downloaded.
+   Always black text on white paper, regardless of the on-screen theme.
    ========================================================================== */
 
 @page {
@@ -598,13 +665,21 @@ button {
   }
 
   .sheet {
+    /* Force light document colors even when dark mode is on. */
+    --sheet-bg: #ffffff;
+    --ink: #000000;
+    --muted: #333333;
+    --rule: #b0b4ba;
+
     width: auto;
     min-height: 0;
     margin: 0;
     padding: 0;
+    background: #fff;
+    color: #000;
     box-shadow: none;
     border: 0;
-    color: #000;
+    transition: none;
   }
 
   .sheet[data-density='compact'] {
@@ -658,5 +733,10 @@ button {
   .sheet a.r-link {
     color: #000;
     text-decoration: none;
+  }
+
+  .sheet a,
+  .sheet a.r-link {
+    color: #000;
   }
 }

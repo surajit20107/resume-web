@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import ThemeToggle from './ThemeToggle'
+import { useTheme } from '../hooks/useTheme'
 import { downloadBlob, printResume, slugify, toPlainText } from '../lib/resumeIO'
 
 export default function Toolbar({
@@ -13,6 +15,7 @@ export default function Toolbar({
   const fileRef = useRef(null)
   const [notice, setNotice] = useState('')
   const timerRef = useRef(null)
+  const { theme, setTheme } = useTheme()
 
   useEffect(() => () => window.clearTimeout(timerRef.current), [])
 
@@ -142,6 +145,10 @@ export default function Toolbar({
               hidden
               onChange={handleFile}
             />
+          </div>
+
+          <div className="menu">
+            <ThemeToggle theme={theme} onChange={setTheme} />
           </div>
         </div>
       </div>
