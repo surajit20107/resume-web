@@ -33,12 +33,7 @@ export default function Toolbar({
   const baseName = slugify(resume.name)
 
   const handlePrint = () => {
-    toast(
-      'In the print dialog pick "Save as PDF". Turn off "Headers and footers" and use Default margins for the cleanest, most ATS-friendly file.',
-      { duration: 9000, icon: '🖨️' },
-    )
-    // Let the toast render before the (blocking) print dialog opens.
-    window.setTimeout(() => printResume(), 80)
+    printResume()
   }
 
   const handleTxt = () => {
