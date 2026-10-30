@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import ThemeToggle from './ThemeToggle'
 import { useTheme } from '../hooks/useTheme'
-import { downloadBlob, printResume, slugify, toPlainText } from '../lib/resumeIO'
+import { copyText, downloadBlob, printResume, slugify, toPlainText } from '../lib/resumeIO'
 
 export default function Toolbar({
   editing,
@@ -48,6 +48,15 @@ export default function Toolbar({
       'application/json;charset=utf-8',
     )
     flash('Exported your resume data (JSON). Keep it to restore later.')
+  }
+
+  const handleCopyJson = async () => {
+    const copied = await copyText(JSON.stringify(resume, null, 2))
+    flash(
+      copied
+        ? 'Copied your resume data (JSON) to the clipboard.'
+        : 'Could not copy to the clipboard — your browser blocked it.',
+    )
   }
 
   const handleFile = (event) => {
@@ -120,6 +129,9 @@ export default function Toolbar({
           <button type="button" className="btn btn-primary" onClick={handlePrint}>
             Download PDF
           </button>
+          <button type="button" className="btn" onClick={handleCopyJson}>
+            Copy JSON
+          </button>
           <button type="button" className="btn" onClick={handleTxt}>
             .txt
           </button>
@@ -135,7 +147,7 @@ export default function Toolbar({
             >
               Import
             </button>
-            <button type="button" className="btn btn-quiet" onClick={handleReset}>
+            <button type="button" className="btn btn-danger" onClick={handleReset}>
               Reset
             </button>
             <input

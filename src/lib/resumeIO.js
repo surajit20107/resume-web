@@ -32,6 +32,34 @@ export function downloadBlob(filename, text, type = 'text/plain;charset=utf-8') 
   window.setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
 
+/** Copy text to the clipboard, falling back to a temporary textarea. */
+export async function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text)
+      return true
+    } catch {
+      // Fall through to the legacy approach (e.g. non-secure contexts).
+    }
+  }
+
+  const area = document.createElement('textarea')
+  area.value = text
+  area.setAttribute('readonly', '')
+  area.style.position = 'fixed'
+  area.style.opacity = '0'
+  document.body.appendChild(area)
+  area.select()
+  let copied
+  try {
+    copied = document.execCommand('copy')
+  } catch {
+    copied = false
+  }
+  area.remove()
+  return copied
+}
+
 /** Open the browser print dialog (Chrome/Edge/Firefox "Save as PDF"). */
 export function printResume() {
   window.print()

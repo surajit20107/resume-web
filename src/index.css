@@ -27,6 +27,9 @@
   --ui-primary-bg: #1d4ed8;
   --ui-primary-bg-hover: #1b45c0;
   --ui-primary-text: #ffffff;
+  --ui-danger: #dc2626;
+  --ui-danger-hover: #b91c1c;
+  --ui-danger-soft: #fef2f2;
   --ui-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
   --ui-shadow-sheet: 0 12px 34px rgba(15, 23, 42, 0.16);
 
@@ -65,6 +68,9 @@
   --ui-primary-bg: #2f6bff;
   --ui-primary-bg-hover: #245ce6;
   --ui-primary-text: #ffffff;
+  --ui-danger: #f87171;
+  --ui-danger-hover: #ef4444;
+  --ui-danger-soft: #2a1518;
   --ui-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
   --ui-shadow-sheet: 0 12px 34px rgba(0, 0, 0, 0.55);
 
@@ -184,6 +190,17 @@ button {
 
 .btn-quiet {
   color: var(--ui-muted);
+}
+
+.btn-danger {
+  color: var(--ui-danger);
+  border-color: var(--ui-danger);
+}
+
+.btn-danger:hover {
+  color: #ffffff;
+  background: var(--ui-danger-hover);
+  border-color: var(--ui-danger-hover);
 }
 
 .seg {
