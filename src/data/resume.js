@@ -12,15 +12,14 @@
 
 export const defaultResume = {
   name: 'Surajit Jana',
-  headline:
-    'Full Stack Developer (Fresher) — JavaScript · TypeScript · React · Next.js · Node.js · MongoDB',
+  headline: 'Aspiring Software Developer | AI & Agents Enthusiast',
   location: 'Kolkata, India',
   phone: '+91-9330975907',
   email: 'surajitdev20107@gmail.com',
   links: [
     {
       label: 'GitHub',
-      value: 'github.com/surajit20107',
+      value: 'surajit20107',
       url: 'https://github.com/surajit20107',
     },
     {
@@ -29,13 +28,17 @@ export const defaultResume = {
       url: 'https://surajit-dev.vercel.app',
     },
     {
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/surajit-jana201',
-      url: 'https://www.linkedin.com/in/surajit-jana201',
+      label: 'Leetcode',
+      value: 'surajit_07',
+      url: 'https://leetcode.com/u/surajit_07',
+    },
+    {
+      label: 'Linkedin',
+      value: 'surajit-jana20107',
+      url: 'https://www.linkedin.com/in/surajit-jana20107',
     },
   ],
-  summary:
-    'Shipped 6+ production web apps and AI-integrated SaaS tools reaching 200+ cumulative real users, with 2+ years of hands-on JavaScript/TypeScript development across freelance projects — from UI/UX design through backend engineering to cloud deployment.',
+  summary: 'Shipped 5+ production web apps and AI-integrated SaaS tools reaching 200+ cumulative real users, with 2+ years of hands-on JavaScript/TypeScript development across freelance projects — from UI/UX design through backend engineering to cloud deployment.',
 
   // Order of the body sections in the rendered resume and the plain-text
   // export. Reorder this list to change which section appears first.
@@ -44,21 +47,21 @@ export const defaultResume = {
   skills: [
     {
       label: 'Languages',
-      value: 'JavaScript (ES6+), TypeScript, HTML5, CSS3, SQL, Python, Go, C',
+      value: 'JavaScript (ES6+), TypeScript, SQL, Python, GoLang, C, C++, Java',
     },
     {
       label: 'Frontend',
       value:
-        'React.js, Next.js, React Native, Redux / Redux Toolkit, React Query, Tailwind CSS, Framer Motion, MUI, Bootstrap',
+        'HTML5, CSS3, React.js, Next.js, React Native, Redux / Redux Toolkit, React Query, Tailwind CSS, Framer Motion, MUI, Bootstrap',
     },
     {
       label: 'Backend',
       value:
-        'Node.js, Express.js, REST APIs, GraphQL, Socket.IO, JWT Auth, OAuth, Passport.js, MVC Architecture, Microservices',
+        'Node.js, Express.js, Fastify, Hono, Spring Boot, Gin-gonic, FastAPI, REST APIs, GraphQL, Socket.IO, JWT Auth, OAuth, MVC Architecture, Microservices',
     },
     {
       label: 'Databases',
-      value: 'MongoDB, Mongoose, PostgreSQL, SQL, SQLite, Redis',
+      value: 'MongoDB, PostgreSQL, Redis, Prisma ORM, Pinecone vector DB, Supabase, SQLite',
     },
     {
       label: 'AI & Agents',
@@ -78,7 +81,7 @@ export const defaultResume = {
       company: 'Freelance (Self-Employed, Remote)',
       dates: 'Jun 2024 – Present',
       bullets: [
-        'Designed, built, and deployed 6+ production web apps end-to-end — from requirements and UI/UX through backend engineering and testing — on Vercel and Render.',
+        'Designed, built, and deployed 5+ production web apps end-to-end — from requirements and UI/UX through backend engineering and testing — on Vercel and Render.',
         'Set up GitHub Actions CI/CD pipelines and Redis caching per app, while owning architecture decisions, client communication, and post-launch support solo across all projects.',
       ],
     },

@@ -238,14 +238,67 @@ button {
   line-height: 0;
 }
 
-.toolbar-notice {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 9px 20px 11px;
+/* Paste-JSON dialog */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  width: min(560px, 100%);
+  padding: 20px;
+  border: 1px solid var(--ui-line);
+  border-radius: 12px;
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow);
+}
+
+.modal-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ui-text);
+}
+
+.modal-sub {
+  margin: 0 0 14px;
   font-size: 13px;
-  color: var(--ui-accent-soft-text);
-  background: var(--ui-accent-soft);
-  border-top: 1px solid var(--ui-accent-soft-line);
+  line-height: 1.5;
+  color: var(--ui-muted);
+}
+
+.modal-textarea {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--ui-line);
+  border-radius: 8px;
+  background: var(--ui-field-bg);
+  color: var(--ui-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 160px;
+}
+
+.modal-textarea:focus {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: -1px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
 }
 
 /* ==========================================================================
